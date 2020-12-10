@@ -62,8 +62,8 @@ export class AppComponent implements OnInit {
     const FD: FormData = Object.keys(this.model).reduce<FormData>(
       (fd, name) => {
         const nameConverter = {
-          src: 'f10',
-          dest: 'f16',
+          src: 'f16',
+          dest: 'f13',
           sum: 'f11',
           comments: 'title'
         };
