@@ -35,6 +35,9 @@ export class FormlyListInputComponent extends FieldType {
 
   onClick = (input: string) => {
     this.formControl.setValue((this.list instanceof Array) ? this.list[input] : input);
+    if (this.list instanceof Object) { 
+      this.model[ this.field.key + '_val' ] = this.list[input]
+    }
     this.field.parent.parent.templateOptions.stepper.next();
   }
 

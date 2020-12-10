@@ -2,11 +2,15 @@
   <mat-step *ngFor="let step of field.fieldGroup;">
     <label>{{ step.templateOptions.label }}</label>
     <ng-template matStepLabel>{{ step.templateOptions.label }}</ng-template>
-    <div class="sum" *ngIf="stepper.selectedIndex===stepper.steps.length-2">{{ model.sum }} ש"ח</div>
+    <div class="sum" *ngIf="stepper.selectedIndex===stepper.steps.length-2">
+      להעביר ל{{ model.src_val }} {{ model.sum }} ש"ח
+    </div>
     <formly-field [field]="step" [stepper]="stepper"></formly-field>
   </mat-step>
 </mat-horizontal-stepper>
 <button
+  mat-raised-button
+  color="primary"
   type="button"
   (click)="stepper.previous()"
   [disabled]="previousDisabled()"
@@ -15,12 +19,12 @@
 </button>
 <div *ngIf="stepper.selectedIndex<stepper.steps.length-1; then thenBlock else elseBlock"></div>
 <ng-template #thenBlock>
-  <button type="button" (click)="stepper.next()" [disabled]="nextDisabled()">
+  <button type="button" mat-raised-button color="primary" (click)="stepper.next()" [disabled]="nextDisabled()">
     המשך
   </button>
 </ng-template>
 <ng-template #elseBlock>
-  <button class="btn btn-primary" [disabled]="!form.valid" type="submit">
-    העברה ל{{ model.dest }}
+  <button class="btn btn-primary" mat-raised-button color="warn" [disabled]="!form.valid" type="submit">
+    העברה ל{{ model.src_val }}
   </button>
 </ng-template>

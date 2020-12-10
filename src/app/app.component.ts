@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   config: Config = null;
   fields: FormlyFieldConfig[] = defaultFields;
   restricted: boolean = null;
+  submitted: boolean = false;
 
   constructor(private accountService: AccountsService, private httpClient: HttpClient) {}
 
@@ -71,7 +72,8 @@ export class AppComponent implements OnInit {
         return fd;
       }, new FormData());
 
-    this.httpClient.post(SERVER_URL, FD, {responseType: 'text', observe: 'response'}).subscribe(
+      this.submitted = true;
+      this.httpClient.post(SERVER_URL, FD, {responseType: 'text', observe: 'response'}).subscribe(
       (res) => {
         let html = `העברת ל${this.model.dest}<BR>${this.model.sum} ש"ח`;
         if (this.model.comments) {
