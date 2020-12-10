@@ -74,6 +74,11 @@ const defaultFields: FormlyFieldConfig[] = [{
             defaultValue: 'he'
         },
         {
+            key: 'new',
+            hide: true,
+            defaultValue: '1'
+        },
+        {
             key: 'my_facebookName',
             hide: true,
             defaultValue: ''

@@ -56,7 +56,6 @@ export class Config {
 
     // const dummyUser = new User(current); // headers
     let dummyUser = new User(current); // headers
-    dummyUser = new User(dummyUser.remainingStr); // headers
     this.current = new User(dummyUser.remainingStr);
   }
 
