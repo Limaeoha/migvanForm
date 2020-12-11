@@ -23,14 +23,13 @@ export class AppComponent implements OnInit {
   config: Config = null;
   fields: FormlyFieldConfig[] = defaultFields;
   restricted: boolean = null;
-  submitted: boolean = false;
+  submitted = false;
 
   constructor(private accountService: AccountsService, private httpClient: HttpClient) {}
 
   getConfig(): void {
     this.accountService.getAccounts().pipe(first())
       .subscribe(config => {
-        console.log(config);
         this.config = config;
         this.restricted = this.config.current.restricted;
         if (this.restricted) {
@@ -44,12 +43,15 @@ export class AppComponent implements OnInit {
           });
         }
 
-        this.fields[0].fieldGroup[0].fieldGroup[0].templateOptions.list =
-          this.config.current.accounts;
+        let to = this.fields[0].fieldGroup[0].fieldGroup[0].templateOptions;
+        to.list = this.config.current.accounts;
 
-        this.fields[0].fieldGroup[1].fieldGroup[0].templateOptions.list = {};
+        to = this.fields[0].fieldGroup[1].fieldGroup[0].templateOptions;
+        to.list = {};
         for (const item of this.config.users) {
-          this.fields[0].fieldGroup[1].fieldGroup[0].templateOptions.list[item[0]] = item[1].fullname;
+          if (item[0] !== this.config.current.username) {
+            to.list[item[0]] = item[1].fullname;
+          }
         }
 
         if (this.config.current.accounts.length === 1) {
@@ -72,8 +74,8 @@ export class AppComponent implements OnInit {
         return fd;
       }, new FormData());
 
-      this.submitted = true;
-      this.httpClient.post(SERVER_URL, FD, {responseType: 'text', observe: 'response'}).subscribe(
+    this.submitted = true;
+    this.httpClient.post(SERVER_URL, FD, {responseType: 'text', observe: 'response'}).subscribe(
       (res) => {
         let html = `העברת ל${this.model.dest}<BR>${this.model.sum} ש"ח`;
         if (this.model.comments) {

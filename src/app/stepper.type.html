@@ -1,30 +1,34 @@
-<mat-horizontal-stepper #stepper>
-  <mat-step *ngFor="let step of field.fieldGroup;">
-    <label>{{ step.templateOptions.label }}</label>
-    <ng-template matStepLabel>{{ step.templateOptions.label }}</ng-template>
-    <div class="sum" *ngIf="stepper.selectedIndex===stepper.steps.length-2">
-      להעביר ל{{ model.src_val }} {{ model.sum }} ש"ח
-    </div>
-    <formly-field [field]="step" [stepper]="stepper"></formly-field>
-  </mat-step>
-</mat-horizontal-stepper>
-<button
-  mat-raised-button
-  color="primary"
-  type="button"
-  (click)="stepper.previous()"
-  [disabled]="previousDisabled()"
-  *ngIf="stepper?.selectedIndex<stepper?.steps.length">
-  חזור
-</button>
-<div *ngIf="stepper.selectedIndex<stepper.steps.length-1; then thenBlock else elseBlock"></div>
-<ng-template #thenBlock>
-  <button type="button" mat-raised-button color="primary" (click)="stepper.next()" [disabled]="nextDisabled()">
-    המשך
-  </button>
-</ng-template>
-<ng-template #elseBlock>
-  <button class="btn btn-primary" mat-raised-button color="warn" [disabled]="!form.valid" type="submit">
-    העברה ל{{ model.src_val }}
-  </button>
-</ng-template>
+<div class="stepper-div">
+  <mat-horizontal-stepper #stepper>
+    <mat-step *ngFor="let step of field.fieldGroup;">
+      <label>{{ step.templateOptions.label }}</label>
+      <ng-template matStepLabel>{{ step.templateOptions.label }}</ng-template>
+      <div class="sum" *ngIf="stepper.selectedIndex===stepper.steps.length-2">
+        להעביר ל{{ model.dest_val }}<BR>{{ model.sum }} ש"ח
+      </div>
+      <formly-field [field]="step" [stepper]="stepper"></formly-field>
+    </mat-step>
+  </mat-horizontal-stepper>
+  <div class="nav-buttons">
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="stepper.previous()"
+      [disabled]="previousDisabled()"
+      *ngIf="stepper?.selectedIndex<stepper?.steps.length">
+      חזור
+    </button>
+    <div *ngIf="stepper.selectedIndex<stepper.steps.length-1; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <button type="button" mat-raised-button color="primary" (click)="stepper.next()" [disabled]="nextDisabled()">
+        המשך
+      </button>
+    </ng-template>
+    <ng-template #elseBlock>
+      <button class="btn btn-primary" mat-raised-button color="warn" [disabled]="!form.valid" type="submit">
+        העבר ל{{ model.dest_val }}
+      </button>
+    </ng-template>
+  </div>
+</div>

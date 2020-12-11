@@ -1,0 +1,35 @@
+label {
+    font-size: 2em;
+}
+
+.last-step {
+    text-align: center;
+    font-size: 10vmin;
+}
+
+:host ::ng-deep .mat-horizontal-stepper-header-container {
+    display: none;
+}
+
+.stepper-div, mat-horizontal-stepper, mat-step, formly-field,
+:host ::ng-deep .mat-horizontal-content-container, :host ::ng-deep .mat-form-field-infix,
+:host ::ng-deep mat-selection-list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+:host ::ng-deep .mat-horizontal-stepper-content, :host ::ng-deep formly-group,
+:host ::ng-deep mat-form-field, :host ::ng-deep app-formly-list-input {
+    height: 100%;
+}
+
+.nav-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.nav-buttons > button {
+    width: 40%;
+}

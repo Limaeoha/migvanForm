@@ -1,6 +1,6 @@
 <div class="spinner" *ngIf="!config || submitted">
   <mat-spinner diameter="200"></mat-spinner>
 </div>
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form [formGroup]="form" (ngSubmit)="submit()" class="main-form">
   <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
 </form>

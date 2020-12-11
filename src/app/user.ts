@@ -54,8 +54,7 @@ export class Config {
       this.accounts.set(newUser.accounts[0], newUser);
     }
 
-    // const dummyUser = new User(current); // headers
-    let dummyUser = new User(current); // headers
+    const dummyUser = new User(current); // headers
     this.current = new User(dummyUser.remainingStr);
   }
 

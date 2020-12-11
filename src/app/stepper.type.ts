@@ -6,18 +6,7 @@ import { FieldType } from '@ngx-formly/material';
 @Component({
   selector: 'app-formly-field-stepper',
   templateUrl: './stepper.type.html',
-  styles: [
-    `label {
-      font-size: 2em;
-    }`,
-    `.last-step {
-      text-align: center;
-      font-size: 10vmin;
-    }`,
-    `:host ::ng-deep .mat-horizontal-stepper-header-container {
-      display: none;
-    }`
-  ]
+  styleUrls: ['./stepper.type.css']
 })
 export class FormlyFieldStepperComponent extends FieldType implements OnInit {
   @ViewChild('stepper') stepper: MatStepper;

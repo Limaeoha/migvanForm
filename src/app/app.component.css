@@ -1,3 +1,31 @@
+.main-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+formly-form {
+    flex-grow: 1;
+}
+
+:host ::ng-deep mat-form-field {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+:host ::ng-deep .mat-form-field-wrapper {
+    flex-grow: 1;
+}
+:host ::ng-deep .mat-form-field-flex {
+    height: 100%;
+    flex-direction: column;
+}
+ 
+:host ::ng-deep .mat-form-field-infix {
+    width: 100%;
+}
+
 .spinner {
     position: absolute;
     top: 0;

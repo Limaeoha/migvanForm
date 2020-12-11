@@ -1,101 +1,101 @@
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 const defaultFields: FormlyFieldConfig[] = [{
-    type: 'stepper',
-    fieldGroup: [
-      {
-        templateOptions: {
-          label: 'חשבון מקור'
-        },
-        fieldGroup: [
-          {
-            key: 'src',
-            type: 'list',
-            templateOptions: {
-              label: 'איזה חשבון תרצה לחייב?',
-              required: true
-            },
-          },
-        ],
+  type: 'stepper',
+  fieldGroup: [
+    {
+      templateOptions: {
+        label: 'חשבון מקור'
       },
-      {
-        templateOptions: { label: 'חשבון יעד' },
-        fieldGroup: [
-          {
-            key: 'dest',
-            type: 'list',
-            templateOptions: {
-              label: 'למי להעביר?',
-              required: true,
-              filter: true
-            },
+      fieldGroup: [
+        {
+          key: 'src',
+          type: 'list',
+          templateOptions: {
+            label: 'איזה חשבון תרצה לחייב?',
+            required: true
           },
-        ],
-      },
-      {
-        templateOptions: { label: 'סכום' },
-        fieldGroup: [
-          {
-            key: 'sum',
-            type: 'keypad',
-            templateOptions: {
-              type: 'number',
-              label: 'סכום',
-              required: true,
-            },
+        },
+      ],
+    },
+    {
+      templateOptions: { label: 'חשבון יעד' },
+      fieldGroup: [
+        {
+          key: 'dest',
+          type: 'list',
+          templateOptions: {
+            label: 'למי להעביר?',
+            required: true,
+            filter: true
           },
-        ],
-      },
-      {
-        templateOptions: { label: 'הערות' },
-        fieldGroup: [
-          {
-            key: 'comments',
-            type: 'input',
-            templateOptions: {
-              type: 'text',
-              label: 'עבור מה?',
-              required: false,
-            },
+        },
+      ],
+    },
+    {
+      templateOptions: { label: 'סכום' },
+      fieldGroup: [
+        {
+          key: 'sum',
+          type: 'keypad',
+          templateOptions: {
+            type: 'number',
+            label: 'סכום',
+            required: true,
           },
-          {
-            key: 'act',
-            hide: true,
-            defaultValue: 'update'
+        },
+      ],
+    },
+    {
+      templateOptions: { label: 'הערות' },
+      fieldGroup: [
+        {
+          key: 'comments',
+          type: 'input',
+          templateOptions: {
+            type: 'text',
+            label: 'עבור מה?',
+            required: false,
+          },
         },
         {
-            key: 'dbid',
-            hide: true,
-            defaultValue: 'masof'
+          key: 'act',
+          hide: true,
+          defaultValue: 'update'
         },
         {
-            key: 'lang',
-            hide: true,
-            defaultValue: 'he'
+          key: 'dbid',
+          hide: true,
+          defaultValue: 'masof'
         },
         {
-            key: 'new',
-            hide: true,
-            defaultValue: '1'
+          key: 'lang',
+          hide: true,
+          defaultValue: 'he'
         },
         {
-            key: 'd_type',
-            hide: true,
-            defaultValue: '1'
+          key: 'new',
+          hide: true,
+          defaultValue: '1'
         },
         {
-            key: 'my_facebookName',
-            hide: true,
-            defaultValue: ''
+          key: 'd_type',
+          hide: true,
+          defaultValue: '1'
         },
         {
-            key: 'ID',
-            hide: true,
-            defaultValue: '307434_degem2'
+          key: 'my_facebookName',
+          hide: true,
+          defaultValue: ''
         },
-],
-      },
-    ],
-  }];
+        {
+          key: 'ID',
+          hide: true,
+          defaultValue: '307434_degem2'
+        },
+      ],
+    },
+  ],
+}];
 
 export { defaultFields };

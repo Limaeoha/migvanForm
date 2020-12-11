@@ -6,11 +6,38 @@ import { FieldType } from '@ngx-formly/material';
   encapsulation: ViewEncapsulation.None,
   template: `
     <mat-selection-list #items [multiple]="false" [formlyAttributes]="field">
-      <input #filterInput *ngIf="to.filter">
-      <mat-list-option *ngFor="let item of this.keys()" [value]="item" (click)="onClick(item)">
-        {{ printItem(item) }}
-      </mat-list-option>
-    </mat-selection-list>`
+      <input #filterInput class="filter-input" *ngIf="to.filter" placeholder="הקלד שם לסינון או בחר חשבון">
+      <div class="list-wrapper">
+        <mat-list-option *ngFor="let item of this.keys()" [value]="item" (click)="onClick(item)">
+          {{ printItem(item) }}
+        </mat-list-option>
+      </div>
+    </mat-selection-list>`,
+  styles: [
+    `mat-selection-list {
+      display: flex;
+      flex-direction: column;
+    }`,
+    `mat-list-option {
+      flex-grow: 1;
+      border-radius: 10px;
+      box-shadow: 5px 5px 10px black;
+      margin-bottom: 15px;
+    }`,
+    `.filter-input {
+      margin-bottom: 15px;
+      width: 100%;
+      box-sizing: border-box;
+    }`,
+    `.list-wrapper {
+      flex-grow: 1;
+      overflow: auto;
+      padding-left: 15px;
+      height: 100px;
+      padding-right: 15px;
+      padding-top: 15px;
+    }`
+  ]
 })
 export class FormlyListInputComponent extends FieldType {
   @ViewChild('filterInput') filter: ElementRef;
@@ -35,9 +62,7 @@ export class FormlyListInputComponent extends FieldType {
 
   onClick = (input: string) => {
     this.formControl.setValue((this.list instanceof Array) ? this.list[input] : input);
-    if (this.list instanceof Object) { 
-      this.model[ this.field.key + '_val' ] = this.list[input]
-    }
+    this.model[ this.field.key + '_val' ] = this.list[input];
     this.field.parent.parent.templateOptions.stepper.next();
   }
 

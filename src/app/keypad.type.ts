@@ -51,7 +51,7 @@ export class FormlyKeypadInputComponent extends FieldType implements AfterViewIn
         theme: 'hg-theme-default hg-layout-numeric numeric-theme',
         inputPattern: /^\d+(?:\.\d{0,2})?$/,
         display: { '{bksp}': '<span class="material-icons">keyboard_backspace</span>' },
-        maxLength: 5
+        maxLength: 8
       });
     });
   }

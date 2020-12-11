@@ -32,12 +32,13 @@ export class AccountsService {
       'http://degem2.migvan.co.il/cgi-webaxy/sal/sal.pl?ID=307434_degem2&' +
       'act=search2&dbid=users&query=res_len%3CD%3Eall%3CD%3Ef9_notnull%3CD%3E1&getValueAJAX=dataid,f8,f9,f46';
     // const allUsersUrl = // dev mode
-    //   '/api/cgi-webaxy/sal/sal.pl?ID=307434_degem2&act=search2&dbid=users&query=res_len<D>all<D>f9_notnull<D>1&getValueAJAX=dataid,f8,f9,f46';
+    //   '/api/cgi-webaxy/sal/sal.pl?ID=307434_degem2' +
+    //   '&act=search2&dbid=users&query=res_len<D>all<D>f9_notnull<D>1&getValueAJAX=dataid,f8,f9,f46';
     // const currentUserUrl = //dev mode
     //   '/api/cgi-webaxy/sal/sal.pl?ID=307434_degem2&act=search2&dbid=users&query=dataid<D>webaxyUser&getValueAJAX=dataid,f8,f9,f46';
     const currentUserUrl =
       'http://degem2.migvan.co.il/cgi-webaxy/sal/sal.pl?ID=307434_degem2&' +
-      'act=search2&dbid=users&query=dataid%3CD%3EwebaxyUser&getValueAJAX=dataid,f8,f9,f46'
+      'act=search2&dbid=users&query=dataid%3CD%3EwebaxyUser&getValueAJAX=dataid,f8,f9,f46';
     const allUsers = this.http.get(allUsersUrl, {responseType: 'text'})
       .pipe(
         retry(3),
